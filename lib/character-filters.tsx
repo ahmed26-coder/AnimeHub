@@ -5,7 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 export function CharacterFilters() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 hidden md:block">
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Filters</CardTitle>

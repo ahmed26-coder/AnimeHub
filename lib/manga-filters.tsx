@@ -10,8 +10,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { X } from "lucide-react"
-import { genres, statuse, type } from "@/constent"
+import { Badge } from "@/components/ui/badge"
+import { X, Filter } from "lucide-react"
+import { genre, orderOptions, statuses, types } from "@/constent"
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 export function MangaFilters() {
   const router = useRouter()
@@ -19,7 +25,7 @@ export function MangaFilters() {
 
   const updateFilter = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString())
-    if (value) {
+    if (value && value !== "all") {
       params.set(key, value)
     } else {
       params.delete(key)
@@ -34,102 +40,253 @@ export function MangaFilters() {
   const activeFilters = Array.from(searchParams.entries())
 
   return (
-    <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Filters</CardTitle>
-          {activeFilters.length > 0 && (
-            <Button variant="outline" size="sm" onClick={clearFilters}>
-              <X className="h-4 w-4 mr-2" />
-              Clear All
+    <div className="space-y-4 md:space-y-6">
+      <div className="block md:hidden">
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" className="w-full flex items-center justify-center">
+              <Filter className="h-4 w-4 mr-2" />
+              Filter
             </Button>
-          )}
-        </CardHeader>
+          </DialogTrigger>
+          <DialogContent className="max-w-[90%] max-h-[80vh] overflow-y-auto rounded-lg p-4">
+            <div className="space-y-4 pt-7">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-medium">Filters</h3>
+                {activeFilters.length > 0 && (
+                  <Button variant="outline" size="sm" onClick={clearFilters}>
+                    <X className="h-4 w-4 mr-2" />
+                    Clear all
+                  </Button>
+                )}
+              </div>
 
-        <CardContent className="space-y-4">
-          {/* Sort By */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Sort By</label>
-            <Select
-              value={searchParams.get("order_by") || ""}
-              onValueChange={(value) => updateFilter("order_by", value)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select sorting" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="score">Score</SelectItem>
-                <SelectItem value="popularity">Popularity</SelectItem>
-                <SelectItem value="start_date">Start Date</SelectItem>
-                <SelectItem value="title">Title</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+              <div>
+                <label className="text-sm font-medium mb-1 block">Sort by</label>
+                <Select
+                  value={searchParams.get("order_by") || "score"}
+                  onValueChange={(value) => updateFilter("order_by", value)}
+                >
+                  <SelectTrigger className="text-sm h-9">
+                    <SelectValue placeholder="Score" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {orderOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-          {/* Type */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Type</label>
-            <Select
-              value={searchParams.get("type") || ""}
-              onValueChange={(value) => updateFilter("type", value)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="All Types" />
-              </SelectTrigger>
-              <SelectContent>
-                {type.map((t) => (
-                  <SelectItem key={t} value={t}>
-                    {t}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+              <div>
+                <label className="text-sm font-medium mb-1 block">Type</label>
+                <Select
+                  value={searchParams.get("type") || "all"}
+                  onValueChange={(value) =>
+                    updateFilter("type", value === "all" ? null : value)
+                  }
+                >
+                  <SelectTrigger className="text-sm h-9">
+                    <SelectValue placeholder="All types" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All types</SelectItem>
+                    {types.map((type) => (
+                      <SelectItem key={type} value={type}>
+                        {type}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-          {/* Status */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Status</label>
-            <Select
-              value={searchParams.get("status") || ""}
-              onValueChange={(value) => updateFilter("status", value)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="All Statuses" />
-              </SelectTrigger>
-              <SelectContent>
-                {statuse.map((status) => (
-                  <SelectItem key={status} value={status}>
-                    {status.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase())}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+              <div>
+                <label className="text-sm font-medium mb-1 block">Status</label>
+                <Select
+                  value={searchParams.get("status") || "all"}
+                  onValueChange={(value) =>
+                    updateFilter("status", value === "all" ? null : value)
+                  }
+                >
+                  <SelectTrigger className="text-sm h-9">
+                    <SelectValue placeholder="All statuses" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All statuses</SelectItem>
+                    {statuses.map((status) => (
+                      <SelectItem key={status} value={status}>
+                        {status.charAt(0).toUpperCase() + status.slice(1)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-          {/* Genre */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">Genre</label>
-            <div className="grid grid-cols-2 gap-2">
-              {genres.map((genre) => {
-                const isActive = searchParams.get("genre") === genre.id.toString()
-                return (
+              <div>
+                <label className="text-sm font-medium mb-1 block">Genre</label>
+                <div className="flex flex-wrap gap-1.5">
+                  {genre.map((genreItem) => (
+                    <Button
+                      key={genreItem.id}
+                      variant={
+                        searchParams.get("genre") === genreItem.id.toString()
+                          ? "default"
+                          : "outline"
+                      }
+                      size="sm"
+                      onClick={() =>
+                        updateFilter(
+                          "genre",
+                          searchParams.get("genre") === genreItem.id.toString()
+                            ? null
+                            : genreItem.id.toString()
+                        )
+                      }
+                      className="text-xs px-2 py-1"
+                    >
+                      {genreItem.name}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <div className="hidden md:block">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between px-4">
+            <CardTitle className="text-lg">Filters</CardTitle>
+            {activeFilters.length > 0 && (
+              <Button variant="outline" size="sm" onClick={clearFilters}>
+                <X className="h-4 w-4 mr-2" />
+                Clear all
+              </Button>
+            )}
+          </CardHeader>
+
+          <CardContent className="space-y-4 px-4 pb-4">
+            <div>
+              <label className="text-sm font-medium mb-2 block">Sort by</label>
+              <Select
+                value={searchParams.get("order_by") || "score"}
+                onValueChange={(value) => updateFilter("order_by", value)}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Score" />
+                </SelectTrigger>
+                <SelectContent>
+                  {orderOptions.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium mb-2 block">Type</label>
+              <Select
+                value={searchParams.get("type") || "all"}
+                onValueChange={(value) =>
+                  updateFilter("type", value === "all" ? null : value)
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="All types" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All types</SelectItem>
+                  {types.map((type) => (
+                    <SelectItem key={type} value={type}>
+                      {type}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium mb-2 block">Status</label>
+              <Select
+                value={searchParams.get("status") || "all"}
+                onValueChange={(value) =>
+                  updateFilter("status", value === "all" ? null : value)
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="All statuses" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All statuses</SelectItem>
+                  {statuses.map((status) => (
+                    <SelectItem key={status} value={status}>
+                      {status.charAt(0).toUpperCase() + status.slice(1)}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium mb-2 block">Genre</label>
+              <div className="grid grid-cols-2 gap-2">
+                {genre.map((genreItem) => (
                   <Button
-                    key={genre.id}
-                    variant={isActive ? "default" : "outline"}
+                    key={genreItem.id}
+                    variant={
+                      searchParams.get("genre") === genreItem.id.toString()
+                        ? "default"
+                        : "outline"
+                    }
                     size="sm"
                     onClick={() =>
-                      updateFilter("genre", isActive ? null : genre.id.toString())
+                      updateFilter(
+                        "genre",
+                        searchParams.get("genre") === genreItem.id.toString()
+                          ? null
+                          : genreItem.id.toString()
+                      )
                     }
                     className="text-xs"
                   >
-                    {genre.name}
+                    {genreItem.name}
                   </Button>
-                )
-              })}
+                ))}
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
+
+      {activeFilters.length > 0 && (
+        <Card className="max-w-full overflow-hidden block md:hidden ">
+          <CardHeader className="py-2 px-4">
+            <CardTitle className="text-sm">Active filters</CardTitle>
+          </CardHeader>
+          <CardContent className="px-4 pb-4">
+            <div className="flex flex-wrap gap-1.5">
+              {activeFilters.map(([key, value]) => (
+                <Badge key={key + value} variant="secondary" className="text-xs py-0.5 px-2">
+                  {key}: {value}
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-auto p-0 ml-1"
+                    onClick={() => updateFilter(key, null)}
+                  >
+                    <X className="h-2.5 w-2.5" />
+                  </Button>
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
 }

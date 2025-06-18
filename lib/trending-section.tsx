@@ -119,7 +119,7 @@ export function TrendingSection() {
 
   return (
     <section className="container mx-auto px-4 py-12">
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-wrap gap-4 justify-between items-center mb-8">
         <div>
           <h2 className="text-3xl font-bold mb-2 flex items-center gap-2">
             <TrendingUp className="h-8 w-8 text-primary" />
