@@ -160,3 +160,15 @@ export const popularSearches = [
 
 export const type = ["Manga", "Novel", "Light Novel", "One-shot", "Doujinshi", "Manhwa", "Manhua"]
 export const statuse = ["publishing", "complete", "hiatus", "discontinued", "not_yet_published"]
+
+export const availableLanguages = [
+  { code: "en", name: "English" },
+  { code: "ja", name: "Japanese" },
+  { code: "es", name: "Spanish" },
+  { code: "fr", name: "French" },
+  { code: "de", name: "German" },
+  { code: "pt-br", name: "Portuguese (Brazil)" },
+  { code: "ru", name: "Russian" },
+  { code: "ko", name: "Korean" },
+  { code: "zh", name: "Chinese" },
+]

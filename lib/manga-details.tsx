@@ -1,8 +1,11 @@
+'use client'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Star, BookOpen, Bookmark } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { toast } from "sonner"
 
 interface MangaDetailsProps {
   manga: {
@@ -40,6 +43,10 @@ interface MangaDetailsProps {
 }
 
 export function MangaDetails({ manga }: MangaDetailsProps) {
+  
+  const handleClick = () => {
+    toast("Watching anime is forbidden in Islam.")
+  }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div className="lg:col-span-1">
@@ -50,15 +57,17 @@ export function MangaDetails({ manga }: MangaDetailsProps) {
                 src={manga.images.jpg.large_image_url || "/placeholder.svg"}
                 alt={manga.title}
                 fill
-                priority 
+                priority
                 className="object-cover"
               />
             </div>
             <CardContent className="p-4 space-y-4">
               <div className="flex gap-2">
-                <Button className="flex-1">
-                  <BookOpen className="h-4 w-4 mr-2" />
-                  Read
+                <Button onClick={handleClick} className="flex-1" asChild>
+                  <Link href={`/manga/${manga.mal_id}/chapters`}>
+                    <BookOpen className="h-4 w-4 mr-2" />
+                    Read
+                  </Link>
                 </Button>
                 <Button variant="outline">
                   <Bookmark className="h-4 w-4" />
@@ -66,6 +75,7 @@ export function MangaDetails({ manga }: MangaDetailsProps) {
               </div>
 
               <div className="space-y-2 text-sm">
+                <p className=" text-red-500 font-medium text-center" >Watching anime is forbidden in Islam and I let myself be warned</p>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Score</span>
                   <div className="flex items-center gap-1">
