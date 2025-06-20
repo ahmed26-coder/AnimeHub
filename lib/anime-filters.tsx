@@ -263,9 +263,15 @@ export function AnimeFilters() {
       </div>
 
       {activeFilters.length > 0 && (
-        <Card className="max-w-full flex md:hidden overflow-hidden">
-          <CardHeader className="py-2 px-4">
+        <Card className="max-w-full flex overflow-hidden">
+          <CardHeader className="py-2 px-4 flex justify-between items-center">
             <CardTitle className="text-sm">Active filters</CardTitle>
+            {activeFilters.length > 0 && (
+              <Button variant="outline" size="sm" onClick={clearFilters}>
+                <X className="h-8 w-8 mr-2 text-white " />
+                Clear all
+              </Button>
+            )}
           </CardHeader>
           <CardContent className="px-4 pb-4">
             <div className="flex flex-wrap gap-1.5">

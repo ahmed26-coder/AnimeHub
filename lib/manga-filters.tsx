@@ -264,14 +264,20 @@ export function MangaFilters() {
       </div>
 
       {activeFilters.length > 0 && (
-        <Card className="max-w-full overflow-hidden block md:hidden ">
-          <CardHeader className="py-2 px-4">
-            <CardTitle className="text-sm">Active filters</CardTitle>
+        <Card className="max-w-full overflow-hidden block">
+          <CardHeader className="py-2 px-4 flex justify-between items-center ">
+            <CardTitle className="">Active filters</CardTitle>
+            {activeFilters.length > 0 && (
+              <Button className=" md:hidden " variant="outline" size="sm" onClick={clearFilters}>
+                <X className="h-4 w-4 mr-2" />
+                Clear all
+              </Button>
+            )}
           </CardHeader>
           <CardContent className="px-4 pb-4">
             <div className="flex flex-wrap gap-1.5">
               {activeFilters.map(([key, value]) => (
-                <Badge key={key + value} variant="secondary" className="text-xs py-0.5 px-2">
+                <Badge key={key + value} variant="secondary" className="text-xs py-0.5 px-2 ">
                   {key}: {value}
                   <Button
                     variant="ghost"
