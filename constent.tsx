@@ -1,5 +1,4 @@
-import { Sword, Heart, Zap, Sparkles, Ghost, Smile, Drama, Rocket } from "lucide-react"
-
+import { Sword, Heart, Zap, Sparkles, Ghost, Smile, Drama, Rocket, PenTool, Code, Globe  } from "lucide-react"
 export const navItems = [
   { href: "/", label: "Home" },
   { href: "/anime", label: "Anime" },
@@ -172,3 +171,31 @@ export const availableLanguages = [
   { code: "ko", name: "Korean" },
   { code: "zh", name: "Chinese" },
 ]
+
+export const timelineSteps = [
+  {
+    title: "Idea Inception",
+    description: "AnimeHub was born from our passion to create a comprehensive platform for anime and manga fans, focusing on seamless user experience and smart discovery.",
+    icon: <Rocket className="h-6 w-6 text-primary" />,
+  },
+  {
+    title: "Interface Design",
+    description: "We designed a modern user interface using Tailwind CSS and shadcn/ui components to ensure a visually appealing and responsive experience across all devices.",
+    icon: <PenTool className="h-6 w-6 text-primary" />,
+  },
+  {
+    title: "Backend Implementation",
+    description: "We built a robust backend using Jikan API and MyAnimeList to deliver accurate and fast data, optimized with Server Components for performance.",
+    icon: <Code className="h-6 w-6 text-primary" />,
+  },
+  {
+    title: "Initial Launch",
+    description: "We launched AnimeHub's first version, equipped with a vast database and features like advanced search and intelligent recommendations.",
+    icon: <Globe className="h-6 w-6 text-primary" />,
+  },
+  {
+    title: "Future Updates",
+    description: "We continuously work on adding new features like seasonal anime tracking, multi-language support, and enhancing community engagement.",
+    icon: <Zap className="h-6 w-6 text-primary" />,
+  },
+];

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Aboutchoose, Aboutcomplete, Aboutmodern, Aboutplatform, Aboutready, Abouttop, Aboutvalues } from './about.chunks'
 import { MarqueeDemo } from './reviews.client'
+import TimelineSection from './abiut.client'
 
 
 export default function page() {
@@ -12,6 +13,7 @@ export default function page() {
       <Aboutmodern />
       <Aboutvalues />
       <MarqueeDemo />
+      <TimelineSection />
       <Aboutcomplete />
       <Aboutready />
     </div>

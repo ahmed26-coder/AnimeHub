@@ -27,8 +27,8 @@ export function HeroSection() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" asChild>
+          <div className="flex flex-col text-white sm:flex-row gap-4 justify-center mb-12">
+            <Button size="lg" asChild className=" text-white">
               <Link href="/anime">
                 <Play className="h-5 w-5 mr-2" />
                 Explore Anime

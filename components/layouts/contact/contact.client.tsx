@@ -47,7 +47,7 @@ export default function ContactPage() {
       toast.success("Message sent successfully!")
       setIsSubmitted(true)
       setFormData({ name: "", email: "", subject: "", message: "" })
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       toast.error("Failed to send message. Please try again.")
     } finally {
@@ -146,7 +146,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button className="w-full" type="submit" disabled={isSubmitting}>
+                  <Button className="w-full text-white " type="submit" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <>
                         <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -160,6 +160,15 @@ export default function ContactPage() {
                     )}
                   </Button>
                 </form>
+              </CardContent>
+            </Card>
+            <Card className=" mt-8">
+              <CardHeader>
+                <CardTitle>Stay Updated</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <Input placeholder="Enter your email" />
+                <Button variant="default" className="w-full text-white ">Subscribe</Button>
               </CardContent>
             </Card>
           </div>
@@ -221,6 +230,12 @@ export default function ContactPage() {
                   <h4 className="font-semibold mb-2">Can I contribute to the project?</h4>
                   <p className="text-sm text-muted-foreground">
                     We welcome contributions. Check out our GitHub repository for more information.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">How can I report a bug or suggest a feature?</h4>
+                  <p className="text-sm text-muted-foreground">
+                    You can report bugs or suggest new features by opening an issue on our <a href="https://github.com/ahmed26-coder/AnimeHub" className=" font-bold underline">GitHub repository</a>. We appreciate your feedback!
                   </p>
                 </div>
               </CardContent>
