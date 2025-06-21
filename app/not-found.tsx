@@ -18,7 +18,7 @@ export default function NotFound() {
         </div>
 
         <Card className="mb-8">
-          <CardContent className="p-8">
+          <CardContent className="px-8">
             <div className="text-6xl mb-4">🔍</div>
             <h2 className="text-2xl font-semibold mb-4">What happened?</h2>
             <p className="text-muted-foreground mb-6">
@@ -52,7 +52,7 @@ export default function NotFound() {
         <div className="text-sm text-muted-foreground">
           <p>
             If you believe this is an error, please{" "}
-            <Link href="/contact" className="underline hover:text-foreground">
+            <Link href="/contact" className="underline font-bold text-base hover:text-foreground">
               contact us
             </Link>{" "}
             and let us know what happened.

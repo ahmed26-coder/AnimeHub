@@ -56,7 +56,7 @@ export function Navbar() {
               <span className="font-bold text-xl">AnimeHub</span>
             </Link>
 
-            <nav className="hidden md:flex items-center space-x-6">
+            <nav className="hidden md:flex items-center space-x-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
