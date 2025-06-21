@@ -1,5 +1,6 @@
 import React from 'react'
 import { Aboutchoose, Aboutcomplete, Aboutmodern, Aboutplatform, Aboutready, Abouttop, Aboutvalues } from './about.chunks'
+import { MarqueeDemo } from './reviews.client'
 
 
 export default function page() {
@@ -10,6 +11,7 @@ export default function page() {
       <Aboutplatform />
       <Aboutmodern />
       <Aboutvalues />
+      <MarqueeDemo />
       <Aboutcomplete />
       <Aboutready />
     </div>
