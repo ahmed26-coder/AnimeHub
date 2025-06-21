@@ -1,5 +1,5 @@
-import { CharacterFilters } from "@/lib/character-filters"
-import { CharacterGrid } from "@/lib/character-grid"
+import { CharacterFilters } from "@/components/layouts/characters/character-filters"
+import { CharacterGrid } from "@/components/layouts/characters/character-grid"
 import { LoadingGrid } from "@/lib/loading-grid"
 import { Suspense } from "react"
 

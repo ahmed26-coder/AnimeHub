@@ -1,7 +1,7 @@
 import notFound from "@/app/not-found"
-import { AnimeCharacters } from "@/lib/anime-characters"
-import { AnimeDetails } from "@/lib/anime-details"
-import { AnimeRecommendations } from "@/lib/anime-recommendations"
+import { AnimeCharacters } from "@/components/layouts/anime/anime-characters"
+import { AnimeDetails } from "@/components/layouts/anime/anime-details"
+import { AnimeRecommendations } from "@/components/layouts/anime/anime-recommendations"
 
 type PageProps = {
   params: Promise<{ id: string }>

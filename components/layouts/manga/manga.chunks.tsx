@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import { LoadingGrid } from "@/lib/loading-grid"
-import { MangaFilters } from "@/lib/manga-filters"
-import { MangaGrid } from "@/lib/manga-grid"
+import { MangaFilters } from "@/components/layouts/manga/manga-filters"
+import { MangaGrid } from "@/components/layouts/manga/manga-grid"
 
 export default function MangaPage() {
   return (

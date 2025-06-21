@@ -1,6 +1,6 @@
 import notFound from "@/app/not-found"
-import { MangaCharacters } from "@/lib/manga-characters"
-import { MangaDetails } from "@/lib/manga-details"
+import { MangaCharacters } from "@/components/layouts/manga/manga-characters"
+import { MangaDetails } from "@/components/layouts/manga/manga-details"
 
 type PageProps = {
   params: Promise<{ id: string }>

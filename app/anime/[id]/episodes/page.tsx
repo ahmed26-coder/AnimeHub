@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 import { notFound } from "next/navigation"
-import { AnimeEpisodes } from "@/lib/anime-episodes"
+import { AnimeEpisodes } from "@/components/layouts/anime/anime-episodes"
 
 // تعريف نوع PageProps مع params كـ Promise
 interface PageProps {

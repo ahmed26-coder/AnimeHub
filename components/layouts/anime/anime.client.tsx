@@ -1,6 +1,6 @@
 import { Suspense } from "react"
-import { AnimeFilters } from "@/lib/anime-filters"
-import { AnimeGrid } from "@/lib/anime-grid"
+import { AnimeFilters } from "@/components/layouts/anime/anime-filters"
+import { AnimeGrid } from "@/components/layouts/anime/anime-grid"
 import { LoadingGrid } from "@/lib/loading-grid"
 
 export default function AnimePage() {
