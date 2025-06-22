@@ -5,7 +5,7 @@ export const navItems = [
   { href: "/manga", label: "Manga" },
   { href: "/characters", label: "Characters" },
   { href: "/about", label: "About" },
-  //{ href: "/blog", label: "Blog" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ]
 

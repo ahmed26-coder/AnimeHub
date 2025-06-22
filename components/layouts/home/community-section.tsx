@@ -122,7 +122,7 @@ export function CommunitySection() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/contact" >
-            <Button size="lg">
+            <Button className=" text-white" size="lg">
               <Users className="h-4 w-4 mr-2" />
               Join Community
             </Button>
