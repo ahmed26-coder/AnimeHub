@@ -78,7 +78,7 @@ export function Navbar() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full"
               />
-              <Button type="submit" size="sm">
+              <Button className=" text-white" type="submit" size="sm">
                 <Search className="h-4 w-4" />
               </Button>
             </form>

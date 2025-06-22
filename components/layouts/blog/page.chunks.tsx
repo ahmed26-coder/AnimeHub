@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { Loader2 } from "lucide-react";
 import BlogContent from "./page.client";
+import { LoadingGrid } from "@/lib/loading-grid";
 
 interface JikanAnimeItem {
   mal_id: number;
@@ -53,13 +53,7 @@ export default async function BlogPage() {
   return (
     <section className="py-16 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-8 text-center">🎌 Best anime</h1>
-      <Suspense
-        fallback={
-          <div className="flex justify-center items-center">
-            <Loader2 className="animate-spin w-8 h-8 text-blue-500" />
-          </div>
-        }
-      >
+      <Suspense fallback={<LoadingGrid />}>
         <BlogContent articles={articles} error={error} />
       </Suspense>
     </section>
