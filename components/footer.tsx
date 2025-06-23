@@ -21,8 +21,8 @@ export function Footer() {
     ],
     company: [
       { label: "About", href: "/about" },
-      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
+      { label: "FAQ", href: "/contact#faq" },
     ],
     connect: [
       { label: "GitHub", href: "#", icon: <Github className="h-5 w-5" /> },
@@ -132,7 +132,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="border-t mt-12 pt-3 flex flex-col sm:flex-row justify-between items-center text-sm text-muted-foreground">
+        <div className="border-t mt-5 pt-3 flex flex-col sm:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>© {currentYear} AnimeHub. All rights reserved.</p>
           <p className="flex items-center gap-1 mt-2 sm:mt-0">
             Made with <Heart className="h-4 w-4 text-red-500 animate-pulse" /> for anime fans
