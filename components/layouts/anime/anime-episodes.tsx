@@ -196,14 +196,11 @@ export function AnimeEpisodes({ animeId }: AnimeEpisodesProps) {
                                     <Play className="h-4 w-4" />
                                     Watch
                                 </Button>
-
-                                {episode.forum_url && (
                                     <Button size="sm" variant="outline" asChild className="w-fit px-2">
-                                        <a href={episode.forum_url} target="_blank" rel="noopener noreferrer">
+                                        <a href="" rel="noopener noreferrer">
                                             <ExternalLink className="h-4 w-4" />
                                         </a>
                                     </Button>
-                                )}
                             </div>
                         </CardContent>
                     </Card>

@@ -39,12 +39,12 @@ interface MangaChaptersProps {
 }
 
 interface Manga {
-  id: string;
-  attributes: {
-    title: {
-      [key: string]: string | undefined;
+    id: string;
+    attributes: {
+        title: {
+            [key: string]: string | undefined;
+        };
     };
-  };
 }
 
 export function MangaChapters({ mangaTitle, mangaTitles }: MangaChaptersProps) {
@@ -291,18 +291,14 @@ export function MangaChapters({ mangaTitle, mangaTitles }: MangaChaptersProps) {
                                         <BookOpen className="h-4 w-4" />
                                         Read
                                     </Button>
-
-                                    {mangaDexId && (
-                                        <Button size="sm" variant="outline" asChild className="w-fit px-2">
-                                            <a
-                                                href={`https://mangadex.org/chapter/${chapter.id}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <ExternalLink className="h-4 w-4" />
-                                            </a>
-                                        </Button>
-                                    )}
+                                    <Button size="sm" variant="outline" asChild className="w-fit px-2">
+                                        <a
+                                            href=""
+                                            rel="noopener noreferrer"
+                                        >
+                                            <ExternalLink className="h-4 w-4" />
+                                        </a>
+                                    </Button>
                                 </div>
                             </CardContent>
                         </Card>

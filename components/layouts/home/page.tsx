@@ -10,10 +10,12 @@ import { NewsSection } from '@/components/layouts/home/news-section'
 import { GenreSpotlight } from '@/components/layouts/home/genre-spotlight'
 import { AnimeStats } from '@/components/layouts/anime/anime-stats'
 import { CommunitySection } from '@/components/layouts/home/community-section'
+import WelcomeDialog from './welcomedialog'
 
 export default function Home() {
   return (
     <div>
+      <WelcomeDialog />
       <HeroSection />
       <SearchSection />
       <TrendingSection />

@@ -40,7 +40,6 @@ export function AnimeGrid() {
   const [likedItems, setLikedItems] = useState<number[]>([]);
   const searchParams = useSearchParams();
 
-  // load/save likes
   useEffect(() => {
     const savedLikes = localStorage.getItem("likedItems");
     if (savedLikes) {
@@ -66,7 +65,7 @@ export function AnimeGrid() {
         const status = searchParams.get("status");
         const order_by = searchParams.get("order_by") || "score";
 
-        let url = `https://api.jikan.moe/v4/anime?page=${page}&limit=20&order_by=${order_by}&sort=desc`;
+        let url = `https://api.jikan.moe/v4/anime?page=${page}&limit=20&order_by=${order_by}&sort=desc&sfw=true`;
 
         if (genre) url += `&genres=${genre}`;
         if (type) url += `&type=${type}`;

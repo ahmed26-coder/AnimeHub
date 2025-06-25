@@ -66,7 +66,7 @@ export function MangaGrid() {
         const status = searchParams.get("status")
         const order_by = searchParams.get("order_by") || "score"
 
-        let url = `https://api.jikan.moe/v4/manga?page=${page}&limit=20&order_by=${order_by}&sort=desc`
+        let url = `https://api.jikan.moe/v4/manga?page=${page}&limit=20&order_by=${order_by}&sort=desc&sfw=true`;
 
         if (genre) url += `&genres=${genre}`
         if (type) url += `&type=${type}`
